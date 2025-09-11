@@ -1,3 +1,4 @@
+
 The best place to create state variables in class based component is the constructor.  
 
 To create a state variable 
@@ -20,7 +21,7 @@ count2: 1 
 
 } 
 
-To update value of state variables in class based components, React gives us a function, this.setState() whicch takes an object of state varibles with the value we want to update our state variables with.  Eg: Count: 0, Count1: 1 If we want to increase the value of these state variables we need to do something like this. this.setState({ 
+To update value of state variables in class based components, React gives us a function, this.setState() whicch takes an object of state varibles with the value we want to update our state variables with.  Eg: Count: 0, Count1: 1 If we want to increase the value of these state variables we need to do something like  this.setState({ 
 
 count: this.state.count+5, 
 
