@@ -1,0 +1,1 @@
+The best place to create state variables in class based component is the constructor.  to create a state variable  we use, this.state and the state is object which contains all state variables.
