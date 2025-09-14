@@ -27,4 +27,44 @@ Parent component Constructor() -> Parent component Render() -> Child Component C
 
 
 Use Of componentDidMount():
-Generally we use componentDidMount() for making API calls so that our component renders with the initial data that is present then make an API call and then with the help of Diff algorithm react finds the difference between two virtual DOMS and updates only the changed items.
+Generally we use componentDidMount() for making API calls so that our component renders with the initial data that is present inititally.
+Then we make an API call and  with the help of Diff algorithm react finds the difference between two virtual DOMS and updates only the changed items.
+
+
+
+Case when there are two or more child Class based components in a Parent class based components .
+
+For eg:
+We have a parent <About /> Class based component and inside that we have two child Class based components.
+
+class UserClass extends React.component{
+return(
+<Child1 />  -- First child class based component
+<Child2 /> -- First child class based component
+)
+}
+
+So what will be the order of execution, we may think that this will be the order of execution:
+
+Parent Constructor -> Parent Render -> Child 1 Constructor -> Child 1 render -> Child 1 componentDidMount -> Child 2 constructor -> Child 2 render -> Child 2 componentDidMount -> Parent componentDidMount
+
+
+But in reality: 
+
+Parent Constructor -> Parent Render -> Child 1 Constructor -> Child 1 render ->  Child 2 constructor -> Child 2 render -> Child 1 componentDidMount -> Child 2 componentDidMount -> Parent componentDidMount.
+
+Its happening since
+React waits until the entire component tree is rendered and mounted in the DOM before calling any `componentDidMount` methods.  
+So, all `componentDidMount` methods (for children and parent) are called after the DOM is ready, not immediately after each child’s render.  
+This ensures that all components are present in the DOM before any side effects or DOM manipulations are performed.
+![[Pasted image 20250914012217.png]]
+
+Lifecycle phases of component:
+
+Mounting -> Updating -> Unmounting
+
+1. Mounting is the phase in React when a component is created and inserted into the DOM for the first time.  
+	During mounting, React runs the constructor (if present), calls the render method to produce JSX, inserts the resulting DOM nodes, and then calls the `componentDidMount` lifecycle method (for class components).  
+	Mounting happens only once for each component—when it first appears in the UI.
+
+	
