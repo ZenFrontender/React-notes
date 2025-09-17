@@ -1,0 +1,3 @@
+
+When we implement lazy loading onto a component or components, and when we navigate to a component which is lazy loaded. We encounter an error of Rendering getting suspended and the component is not loaded.
+we encounter that error when the user tried to navigate to that component, a n/w call gets made to fetch the JS file required for that component, it will cause a delay whether it is of few mS 9only but when we tried to load that component the required JS file was not there. Hence we encounters an error of rendering getting suspended.
